@@ -47,7 +47,8 @@ document.querySelector('#bpanel').addEventListener('click',(des)=>{
     randombubbles()
    }
    else{
-    
+    hitGenerate()
+    randombubbles()
    }
 })
 

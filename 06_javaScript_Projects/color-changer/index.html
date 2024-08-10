@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colour Changer Cubes </title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            
+        }
+        /* body{
+            background-color: aqua
+        } */
+        .navbar{
+            display: flex;
+            justify-content: space-around;
+            background-color: grey;
+            padding: 10px 20px;
+        }
+        .navbar a{
+
+            text-decoration: none;
+            color:white;
+            padding-top: 10px;
+        }
+        .navbar h1{
+            color: white;
+        }
+        .color-boxes{
+            display:flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            margin-top: 10%;
+            
+            /* gap: 10px; */
+        }
+        .bottom-text{
+            text-align: center;
+        }
+        .color-box{
+            border: 1px solid black;
+            width:200px;
+            height:100px;
+            margin: 5px 5px;
+            padding: 45px 20px;
+            text-align: center;
+            cursor: pointer;
+            
+        }
+    
+
+       
+
+    </style>
+</head>
+<body>
+<div class="navbar">
+    <h1>Colour Changer Cubes</h1>
+    <a href="../index.html">Back</a>
+</div>
+<div class="color-boxes">
+    <div class="color-box" id="red" style="background-color: red;"></div>
+    <div class="color-box" id="yellow" style="background-color:yellow;"></div>
+    <div class="color-box" id="blue" style="background-color: blue"></div>
+    <div class="color-box" id= "green"style="background-color:green"></div>
+    <div class="color-box" id="purple" style="background-color:purple;"></div>
+</div>
+<h3 class="bottom-text">Try Clicking and Choose the Colour from given Boxes  and it will change background-color of the page</h3>
+
+    
+</body>
+<script>
+    const buttons =document.querySelectorAll('.color-box');
+    const body= document.querySelector('body');
+    
+    buttons.forEach((button)=>{
+
+        button.addEventListener('click',(e)=>{
+           if(e.target.id==="red"){
+            body.style.backgroundColor=e.target.id;
+           }
+           if(e.target.id==="yellow"){
+            body.style.backgroundColor=e.target.id;
+           }
+           if(e.target.id==="blue"){
+            body.style.backgroundColor=e.target.id;
+           }
+           if(e.target.id==="green"){
+            body.style.backgroundColor=e.target.id;
+           }
+           if(e.target.id==="purple"){
+            body.style.backgroundColor=e.target.id;
+           }
+        })
+    })
+
+</script>
+</html>

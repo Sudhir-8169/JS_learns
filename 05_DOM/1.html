@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>DOM learning</title>
+    <style>
+        .bg-black{
+            background-color: black;
+            color: white;
+        }
+
+    </style>
+
+</head>
+<body class="bg-black">
+    <div class="div" >
+        <h1 id="title" class="heading">
+            its my name here and i will definetely 
+            make it big one day
+        </h1>
+        <h1 id="second-passage">
+           it second passaage and i am up for it
+        </h1>
+        <p>its some dummy paragraph for learning</p>
+        <input type="password" class="psd" id="pwd">
+    </div>
+    <ul>
+        <li class="list-item">1</li>
+        <li class="list-item">2</li>
+        <li class="list-item">3</li>
+        <li class="list-item">4</li>
+    </ul>
+</body>
+<script>
+elementByID=document.getElementById('second-passage')
+console.log(elementByID)
+elementByClassName=document.getElementsByClassName('div')
+console.log(elementByClassName);
+
+</script>
+
+</html>

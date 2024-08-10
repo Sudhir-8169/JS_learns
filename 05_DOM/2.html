@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body style="background-color: #212121;color: #fff;">
+    <div class="parent" id="unique-key">
+        <div class="day">Monday</div>
+        <div class="day">Tuesday</div>
+        <div class="day">Thursday</div>
+        <div class="day">Friday</div>
+    </div>
+</body>
+<script>
+// <=============== Acess parent and its children===================>
+    parentclass = document.querySelector('.parent')
+
+    // console.log(parentclass)                //it will give the element whihc is getting selected
+    // console.log(parentclass.children)       //it will fgive the html connection of the parent 
+    // console.log(parentclass.children[0])   //index wise printing of childrens of the parent
+    //looping will be possible only using for loop
+
+    // for (let i = 0; i < parentclass.children.length; i++) {
+    //     console.log(parentclass.children[i])
+    //     console.log(parentclass.children[i].style.color = "green");
+
+
+    // }
+// <===================first child and last child of parent==============>
+    // console.log(parentclass.firstElementChild)
+    // console.log(parentclass.lastElementChild)
+
+
+// <=============== Acess children and using child access parent===================>
+    // const dayOne=document.querySelector('.day')
+    // console.log (dayOne) ;
+    // console.log(dayOne.parentElement);
+    // console.log(dayOne.nextElementSibling);
+
+//<==========================childNodes============================>
+    console.log(parentclass.childNodes); //it wont count only tags it also count linebreaks 
+</script>
+
+</html>

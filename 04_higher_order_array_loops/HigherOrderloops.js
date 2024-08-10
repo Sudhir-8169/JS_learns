@@ -67,7 +67,7 @@
 //     console.log(item,":",myObjects[item]);
 // }
 
-// // Question 2 : can we use for in loop in array
+// // Question 2 : can we use for-in loop in array
 
 // arr1=[2,3,4,5]
 // for(const i in arr1){
@@ -95,15 +95,15 @@
 
 //<--------For each loop-------> 
 
-    // const coding=["js","ruby","c","Java","python"]
+    const coding=["js","ruby","c","Java","python"]
 
     // coding.forEach(function (val){
     //     console.log(val)
     // });
 
-    // coding.forEach(item => {
-    //     console.log(item)
-    // });
+    coding.forEach(item => {
+        console.log(item)
+    });
     
     // function printme(item){
     //     console.log(item);
