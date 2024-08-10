@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    
+    <title>Dom</title>
+   
+</head>
+
+<body style="background-color: #212121;color: #fff;">
+    <ul class="language">
+        <li>javascript</li>
+    </ul>
+    
+</body>
+<script>
+    function addlanguage(langname){
+        const li=document.createElement('li')
+        li.innerHTML=`${langname}`
+        document.querySelector('.language').appendChild(li)
+    }
+    addlanguage("python")
+    addlanguage("Java")
+
+//<============optimize way for the above===========>  
+    function addlanguageOptimizeWay(langName){
+
+        const li= document.createElement('li');
+
+        li.appendChild(document.createTextNode(langName))
+
+        document.querySelector('.language').appendChild(li)
+    }
+    
+
+//Edit
+const secondLAng= document.querySelector("li:nth-child(2)")
+
+const newlist=document.createElement('li')
+
+newlist.textContent="Mojo"
+
+secondLAng.replaceWith(newlist)
+
+//Edit
+const firstLanguage=document.querySelector("li:first-child")
+firstLanguage.outerHTML='<li>Type Script</li>'
+
+//remove
+const lastLanguage=document.querySelector("li:last-child")
+lastLanguage.remove()
+</script>
+</html>

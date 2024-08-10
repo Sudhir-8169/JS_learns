@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guess the Number</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-around;
+            background-color: grey;
+            padding: 10px 20px;
+        }
+
+        .navbar a {
+
+            text-decoration: none;
+            color: white;
+            padding-top: 10px;
+        }
+
+        .navbar h1 {
+            color: white;
+        }
+
+        .main-box {
+            padding: 50px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            border: 1px solid black;
+            padding: 50px 100px;
+
+        }
+
+        .form {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="navbar">
+        <h1>Guess the number </h1>
+        <a href="../index.html">Back</a>
+    </div>
+    <div class="main-box">
+        <h2>Number guessing game</h2>
+        <p>Guess the number between <span style="color: green; font-weight: bolder">1</span> and <span
+                style="color: green;font-weight: bolder;">100</span> </p>
+        <p>There will be <span style="color: red;font-weight: bolder">10</span> total attempts </p>
+        <form class="form">
+            <label for="user-gussed" style="font-size: 30px;">Guess your number</label><br>
+            <input type="text" id="user-gussed" name="number" style="padding: 5px 10px;text-align: center;"><br>
+            <input type="submit" value="Submit Guess" style="padding: 5px 10px;">
+        </form>
+        <h3>Previous Guess :<span id="pguess"></span></h3>
+        <h3>Remaning Attempts :<span id="attempts"></span></h3>
+        <h2 id="finish" style="color: red;"></h2>
+
+    </div>
+
+
+</body>
+<script>
+
+     Previous = [];
+   
+    const form = document.querySelector('.form');
+    const PreviousValue = document.querySelector('#pguess')
+    var correctguess = 0;
+    var attempts = 10;
+    var GuessCount = 0;
+
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const userchoice = parseInt(document.querySelector('#user-gussed').value);
+        const attemptsvalue = document.querySelector('#attempts');
+        var randomGuess = Math.round(Math.random() * 100);
+
+        if (attempts > 0) {
+            attempts -= 1;
+            if (userchoice === randomGuess) {
+                correctguess += 1
+            }
+            attemptsvalue.innerHTML = attempts;
+            Previous.push(userchoice);
+            PreviousValue.innerHTML +=`${Previous[GuessCount]}${" "}`
+            GuessCount += 1
+
+            console.log(randomGuess);
+            
+            
+
+
+
+
+
+        }
+        else {
+            const finishedline = document.querySelector('#finish');
+            finishedline.innerHTML = `Attempts finished and You guessed ${correctguess} correct guess.`
+
+        }
+
+
+    })
+
+
+
+
+
+
+
+</script>
+
+</html>
