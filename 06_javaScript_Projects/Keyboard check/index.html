@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keyboard Check</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-around;
+            background-color: grey;
+            padding: 10px 20px;
+        }
+
+        .navbar a {
+
+            text-decoration: none;
+            color: white;
+            padding-top: 10px;
+        }
+
+        .navbar h1 {
+            color: white;
+        }
+
+        body {
+            background-color: rgb(58, 53, 53);
+            ;
+        }
+
+        .content {
+            display: flex;
+            justify-content: center;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+
+
+        }
+        table,th,td{
+            text-align: center;
+            font-size: 20px;
+            padding: 5px 10px;
+            border: 1px solid rgb(218, 142, 3);
+        }
+         
+    </style>
+</head>
+
+<body>
+    <div class="navbar">
+        <h1>Keyboard Check</h1>
+        <a href="../index.html">Back</a>
+    </div>
+    <div class="content" id="insert">
+        <p style="font-size: 25px;">
+            Press Any <span style="color: rgba(250, 164, 5, 0.918);">key</span> and see the magic
+        </p>
+    </div>
+
+
+
+
+</body>
+<script>
+
+    const insertHtml = document.querySelector('#insert')
+    window.
+        addEventListener('keyup', (e) => {
+            insertHtml.innerHTML =
+                `
+                <table>
+                    <tr>
+                        <th>Key</th>
+                        <th>Key value</th>
+                        <th>Key name</th>
+                    </tr>
+                    <tr>
+                        <td>${e.key===" "?" Space":e.key}</td>
+                        <td>${e.keyCode}</td>
+                        <td>${e.code}</td>
+                    </tr>
+                </table>
+    `
+        })
+
+
+
+
+
+
+
+</script>
+
+</html>
