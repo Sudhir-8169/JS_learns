@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events Learning
+    </title>
+    <style>
+    li{
+        list-style: none;
+        cursor: pointer;
+    }
+    a{
+        cursor: pointer;
+    
+    }
+    </style>
+</head>
+<body style="background-color: #414141;color: aliceblue;">
+    <h2>Amazing Image</h2>
+    <div>
+        <ul id="images">
+            <li><img width="200px" id="1" src="img/pexels-padrinan-1061142.jpg" alt=""></li>
+            <li><img width="200px" id="2" src="img/pexels-padrinan-1061141.jpg" alt=""></li>
+            <li><img width="200px" id="3" src="img/pexels-padrinan-1061140.jpg" alt=""></li>
+            <li><img width="200px" id="4" src="img/pexels-padrinan-1061139.jpg" alt=""></li>
+            <li><a id="google" href="https://google.com" style="color: aliceblue;">google</a></li>
+        </ul>
+    </div>
+
+    
+</body>
+<script>
+    
+//type,times tamp,default prevented
+//target ,toElement , srcElement ,currentTarget,
+//clientX,clientY,ScreenX,screenY
+//altkey,ctrl,key,shiftkey,keycode
+
+//  <--------first approach------>   
+// document.getElementById('3').onclick = function(){
+//     alert("3 clicked")
+// }
+
+//  <--------Second approach eventListener------>   
+// document.getElementById('3').addEventListener('click',function(){
+//  alert('3 clicked again')
+// })
+
+// attachEvent()
+// jQuery
+
+
+// document.getElementById('images').addEventListener('click',function(e){
+
+//     console.log('clicked inside the ul');
+    
+// },false) 
+
+
+// document.getElementById('3').addEventListener('click',function(e){
+
+// console.log('clicked 3');
+// e.stopPropagation()//it will not lead to bubble
+
+// },false) 
+//event propogation event bubbling means bottom to top event handling id the value is et on false
+//and if both value is true then it will print as top tp bottom which is also called ad event capttrug 
+
+// document.getElementById('google').addEventListener('click',(e)=>{
+// e.preventDefault();
+
+// console.log('g clicked');
+
+
+// }) 
+
+
+document.querySelector('#images').addEventListener
+('click', function(e){
+
+    // console.log(e.target)
+    if(e.target.tagName==="IMG"){
+    console.log(e.target.parentNode);
+
+    let removeIt = e.target.parentNode;
+    removeIt.remove();
+    }
+
+    
+      
+})
+
+</script>
+</html>

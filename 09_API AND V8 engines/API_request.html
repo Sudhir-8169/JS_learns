@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, 
+     initial-scale=1.0">
+    <title>XMLHttpREquest APIS</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+
+        .box {
+
+            background-color: rgb(255, 208, 52);
+            padding: 5px;
+            position: absolute;
+            top:10%;
+            left: 50%;
+            transform: translateX(-50%);
+
+
+        }
+
+        .card {
+
+            background-color: white;
+            color: black;
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            padding: 10px 20px;
+        }
+
+        .profile_pic_Panel img {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 500px;
+            border: 4px solid rgb(253, 51, 85);
+            cursor: pointer;
+
+        }
+
+        .profile_Details_Panel {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+            gap: 10px;
+        }
+        .profile_Numbers{
+            display: flex;
+            justify-content: space-between;
+            gap: 5px;
+            
+            
+        }
+        .profile_Numbers button{
+            padding: 4px 10px;
+            font-size:15px;
+            border-style: none;
+            background-color: rgb(70, 186, 253);
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        .profile_Numbers span{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            font-size: large;
+        }
+        .Bio-card{
+            padding: 10px;
+            background-color: white;
+            color: gray;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            font-size:15px;
+
+
+            
+        }
+
+        
+
+        
+    </style>
+</head>
+
+
+
+<body style="background-color: rgb(2, 53, 95);color: white;">
+
+    <div class="box">
+        <div class="card">
+            <div class="profile_pic_Panel">
+                <img src="" alt="profile-pic" id="profile-pic">
+            </div>
+            <div class="profile_Details_Panel">
+                <div class="name_id">
+                    <h2><span id="profile_name"><span></span></h2>
+                    <p>@<span id="profile_id"><span></span></p>
+                </div>
+                <div class="profile_Numbers">
+                    <div class="followers">
+                        <button>Followers </button>
+                        <span id="followers_nums"></span>
+                    </div>
+                    <div class="following">
+                        <button>Following </button>
+                        <span id="following_nums"></span>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        <div class="Bio-card">
+            <p id="bio" ></p>
+            <p class="youtube">Youtube - <span><a href="" id="Youtube" > Youtube</a></span></p>
+        </div>
+    </div>
+
+
+
+</body>
+<script>
+    //  <!--AJAX (Asynchronus Javascript and XML  )  -->   
+    /*
+        1.XMLHttpRequest (XHR) objects are used to interact with 
+        server
+        2.You can recieve data froma URL withou having to do a 
+        full page refresh.
+        3.This enables a webpage to update juts a part of page 
+        without disrupting what the user is doing. 
+    */
+    //  <!-- Ready State in XMLHttpREquest -->
+
+    /* 
+       value and state of ReadyState properties
+    
+       0 -> unsent -> 
+       
+       1 -> opened -> 
+       
+       2 -> Headers Recieveed -> 
+       
+       3 -> Loading-> 
+       
+       4 -> Done-> 
+    */
+
+
+    const requestURL = 'https://api.github.com/users/hiteshchoudhary';
+
+    const XHR = new XMLHttpRequest();
+    //console.log(XHR);
+    XHR.open('GET', requestURL);
+    console.log("ready state :" + " " + XHR.readyState);
+
+    XHR.onreadystatechange = function () {
+
+        console.log(XHR.readyState);
+        if (XHR.readyState === 4) {
+
+            const data = this.responseText;
+            console.log(data);
+            //type of data is string
+            // console.log(typeof data);
+            //changed data type from string to objects
+            dataInObjectFormat = JSON.parse(data);
+            //Access the objects key 
+            //  console.log(dataInObjectFormat.followers);
+
+
+            //get followers
+            const followers = dataInObjectFormat.followers;
+            const following= dataInObjectFormat.following;
+            //get url of the profile
+            const profile_pic_URL = dataInObjectFormat.avatar_url;
+
+            //get the name
+            const name = dataInObjectFormat.name;
+            // console.log(typeof name)
+            const b=followers>10?Math.floor( followers/1000)+"K":followers
+            //get bio
+            const bio =dataInObjectFormat.bio;
+            //get twiiter and youtube accoutn link
+
+            const youtubechannel=dataInObjectFormat.blog;
+            
+            const twiiterProfile=dataInObjectFormat.tw;
+            
+            console.log(youtubechannel);
+            
+            document.getElementById('followers_nums').innerHTML = `${b}`;
+            document.getElementById('following_nums').innerHTML = `${following}`;
+            document.getElementById('profile-pic').src = `${profile_pic_URL}`;
+            document.getElementById('profile_name').innerHTML = `${name}`;
+            document.getElementById('profile_id').innerHTML = `${nameToId( name.toLowerCase())}`;
+            document.getElementById('bio').innerHTML = `${bio}`;
+            document.getElementById('Youtube').innerHTML= `${youtubechannel}`;
+            document.getElementById('Youtube').href= `${youtubechannel}`;
+            
+            
+
+            //covert name to id
+            function nameToId(a) {
+                let newName = ""
+                for (var i = 0; i < a.length; i++) {
+                    if (a[i] != " ") {
+                        newName += a[i];
+                    }
+                }
+                return newName;
+            }
+            
+
+            // console.log("hey "+nameToId("sudhir jha"))
+            // document.getElementById('profile_id').src=`${}`;
+
+
+
+
+
+
+
+        }
+
+    }
+
+    XHR.send();
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+</html>
